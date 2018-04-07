@@ -1,5 +1,10 @@
+// @flow
 import * as React from 'react';
 import {pure} from 'recompose';
+
+type Props = {|
+  isFullScreen: boolean,
+|};
 
 /**
  * Icon for fullscreen switch button
@@ -7,7 +12,7 @@ import {pure} from 'recompose';
  * @param props
  * @return {DOM}
  */
-export default pure(function({isFullScreen}) {
+export default pure(function({isFullScreen}: Props) {
   if (isFullScreen) {
     return (
       <svg id="no-fullscreen" width="15" height="15" viewBox="0 0 612 612">
