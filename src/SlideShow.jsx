@@ -368,7 +368,14 @@ export default class SlideShow extends React.Component {
           const styleObj =
             this.state.index === index ? styles.SHOW_IMG : styles.HIDE_IMG;
           styleObj['width'] = '100%';
-          return <img className="content" src={img} style={styleObj} />;
+          return (
+            <img
+              key={`img-preview-${index}`}
+              className="content"
+              src={img}
+              style={styleObj}
+            />
+          );
         })}
       </div>
     );

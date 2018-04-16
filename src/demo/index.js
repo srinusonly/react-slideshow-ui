@@ -17,7 +17,7 @@ class App extends React.Component {
           style={{width: 400}}
           index={2}
           updatePageIndex={el => {
-            this.setState({ updatePageIndex: el });
+            this.setState({updatePageIndex: el});
           }}
           images={[
             './img/example1.png',
