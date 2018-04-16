@@ -130,6 +130,7 @@ var App = function (_React$Component) {
         null,
         _react2.default.createElement(_SlideShow2.default, {
           style: { width: 400 },
+          index: 2,
           images: ['./img/example1.png', './img/example2.png', './img/example3.png'],
           withTimestamp: true,
           pageWillUpdate: function pageWillUpdate(index, image) {

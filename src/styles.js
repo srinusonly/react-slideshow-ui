@@ -76,4 +76,10 @@ export const Styles = {
     position: 'relative',
     width: '100%',
   },
+  HIDE_IMG: {
+    display: 'none',
+  },
+  SHOW_IMG: {
+    display: 'block',
+  },
 };

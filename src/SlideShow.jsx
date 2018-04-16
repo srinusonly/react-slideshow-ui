@@ -21,6 +21,7 @@ type Props = {
   images: Array<string>,
   prevIcon: Node,
   nextIcon: Node,
+  index: number,
   withTimestamp: boolean,
   pageWillUpdate: (index: number, image: string) => void,
 };
@@ -70,11 +71,16 @@ export default class SlideShow extends React.Component {
       timestamp = Math.floor(new Date().getTime() / 1000);
     }
 
+    let index = 0;
+    if (props.index && typeof props.index === 'number') {
+      index = props.index;
+    }
+
     this.style = Object.assign({}, styles.ROOT, this.props.style);
 
     this.state = {
       src: '',
-      index: 0,
+      index: index,
       progress: 0,
       timestamp: timestamp,
       preview: 0,
@@ -89,6 +95,7 @@ export default class SlideShow extends React.Component {
    * updates image src, page, and progress.
    */
   componentWillMount() {
+    console.log('this.props :: ', this.props);
     const images: Array<string> = this.props.images;
     if (this.isEmptyArray(this.props.images)) {
       return;
@@ -105,6 +112,7 @@ export default class SlideShow extends React.Component {
       preview: 0,
       previewIndex: 0,
     });
+    this.updatePageState(this.props.index);
   }
 
   /**
@@ -265,11 +273,6 @@ export default class SlideShow extends React.Component {
    * @returns {XML}
    */
   render() {
-    let src = this.state.src;
-    if (this.props.withTimestamp === true) {
-      src += `?${this.state.timestamp}`;
-    }
-
     let paging;
     if (this.props.images) {
       paging = `${this.state.index + 1} / ${this.props.images.length}`;
@@ -280,7 +283,7 @@ export default class SlideShow extends React.Component {
         <div className="slideshow-wrapper" style={{margin: 'auto'}}>
           <div>
             <div style={styles.IMAGE}>
-              <img className="content" src={src} style={{width: '100%'}} />
+              {this._renderImages()}
               <div
                 className="prevOnContent"
                 onClick={this.onClickPrevButton}
@@ -348,6 +351,22 @@ export default class SlideShow extends React.Component {
       </div>
     );
   }
+
+  /**
+   *
+   */
+  _renderImages = () => {
+    return (
+      <div>
+        {this.props.images.map((img, index) => {
+          const styleObj =
+            this.state.index === index ? styles.SHOW_IMG : styles.HIDE_IMG;
+          styleObj['width'] = '100%';
+          return <img className="content" src={img} style={styleObj} />;
+        })}
+      </div>
+    );
+  };
 
   /**
    * preview renderer
