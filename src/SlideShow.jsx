@@ -95,7 +95,6 @@ export default class SlideShow extends React.Component {
    * updates image src, page, and progress.
    */
   componentWillMount() {
-    console.log('this.props :: ', this.props);
     const images: Array<string> = this.props.images;
     if (this.isEmptyArray(this.props.images)) {
       return;
@@ -113,6 +112,13 @@ export default class SlideShow extends React.Component {
       previewIndex: 0,
     });
     this.updatePageState(this.props.index);
+  }
+
+  /**
+   * componentDidMount
+   */
+  componentDidMount() {
+    this.props.updatePageIndex(index => this.updatePageState(index));
   }
 
   /**

@@ -16,6 +16,9 @@ class App extends React.Component {
         <SlideShow
           style={{width: 400}}
           index={2}
+          updatePageIndex={el => {
+            this.setState({ updatePageIndex: el });
+          }}
           images={[
             './img/example1.png',
             './img/example2.png',
