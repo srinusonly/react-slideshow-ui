@@ -119,6 +119,7 @@ export default class SlideShow extends React.Component {
    */
   componentDidMount() {
     this.props.updatePageIndex(index => this.updatePageState(index));
+    this.props.renderCallbacks(this);
   }
 
   /**

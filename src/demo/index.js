@@ -19,6 +19,7 @@ class App extends React.Component {
           updatePageIndex={el => {
             this.setState({updatePageIndex: el});
           }}
+          renderCallbacks={obj => (obj.style.width = '50%')}
           images={[
             './img/example1.png',
             './img/example2.png',
