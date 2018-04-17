@@ -120,6 +120,7 @@ export default class SlideShow extends React.Component {
   componentDidMount() {
     this.props.updatePageIndex(index => this.updatePageState(index));
     this.props.renderCallbacks(this);
+    document.addEventListener('keydown', this.keydownEvent);
   }
 
   /**
@@ -202,10 +203,10 @@ export default class SlideShow extends React.Component {
         const isFullScreen = isFullscreen();
         this.setState({isFullScreen: isFullScreen});
         if (isFullScreen) {
-          document.addEventListener('keydown', this.keydownEvent);
-          element.style.width = '70%';
+          // document.addEventListener('keydown', this.keydownEvent);
+          element.style.width = '100%';
         } else {
-          document.removeEventListener('keydown', this.keydownEvent);
+          // document.removeEventListener('keydown', this.keydownEvent);
           element.style.width = '100%';
         }
       });
@@ -289,19 +290,7 @@ export default class SlideShow extends React.Component {
       <div style={this.style} className="slideshow">
         <div className="slideshow-wrapper" style={{margin: 'auto'}}>
           <div>
-            <div style={styles.IMAGE}>
-              {this._renderImages()}
-              <div
-                className="prevOnContent"
-                onClick={this.onClickPrevButton}
-                style={styles.PREV_ON_CONTENT}
-              />
-              <div
-                className="nextOnContent"
-                onClick={this.onClickNextButton}
-                style={styles.NEXT_ON_CONTENT}
-              />
-            </div>
+            <div style={styles.IMAGE}>{this._renderImages()}</div>
           </div>
           {this._renderPreview()}
           <div
