@@ -87,6 +87,7 @@ export default class SlideShow extends React.Component {
       previewIndex: 0,
       isFullScreen: false,
     };
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   /**
@@ -121,6 +122,25 @@ export default class SlideShow extends React.Component {
     this.props.updatePageIndex(index => this.updatePageState(index));
     this.props.renderCallbacks(this);
     document.addEventListener('keydown', this.keydownEvent);
+  }
+
+  /**
+   * componentWillUnmount
+   */
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.keydownEvent);
+  }
+
+  /**
+   *
+   *
+   */
+  handleKeyDown(isRemove) {
+    if (isRemove) {
+      document.removeEventListener('keydown', this.keydownEvent);
+    } else {
+      document.addEventListener('keydown', this.keydownEvent);
+    }
   }
 
   /**
