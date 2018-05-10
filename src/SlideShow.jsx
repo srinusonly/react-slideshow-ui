@@ -308,8 +308,11 @@ export default class SlideShow extends React.Component {
 
     return (
       <div style={this.style} className="slideshow">
-        <div className="slideshow-wrapper" style={{margin: 'auto'}}>
-          <div>
+        <div className="slideshow-wrapper" style={styles.SLIDESHOW_WRAPPER}>
+          <div
+            className="slideshow-wrapper-inner"
+            style={styles.SLIDESHOW_WRAPPER_INNER}
+          >
             <div style={styles.IMAGE}>{this._renderImages()}</div>
           </div>
           {this._renderPreview()}
@@ -373,7 +376,7 @@ export default class SlideShow extends React.Component {
    */
   _renderImages = () => {
     return (
-      <div>
+      <div className="image-parent" style={styles.IMAGE_PARENT}>
         {this.props.images.map((img, index) => {
           const styleObj =
             this.state.index === index ? styles.SHOW_IMG : styles.HIDE_IMG;

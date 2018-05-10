@@ -13,6 +13,7 @@ export const Styles = {
   IMAGE: {
     position: 'relative',
     width: '100%',
+    height: '100%',
   },
   BUTTON: {
     backgroundColor: 'transparent',
@@ -25,9 +26,12 @@ export const Styles = {
     height: '30px',
     lineHeight: '30px',
     margin: 'auto',
-    position: 'relative',
+    position: 'absolute',
     textAlign: 'center',
     width: '100%',
+    bottom: '0',
+    left: '0',
+    zIndex: '10',
   },
   PAGE_VIEW: {
     color: '#fff',
@@ -81,5 +85,26 @@ export const Styles = {
   },
   SHOW_IMG: {
     display: 'block',
+    width: 'auto',
+    height: '100%',
+    maxWidth: 'none',
+    position: 'relative',
+    margin: '0px auto',
+  },
+  IMAGE_PARENT: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    paddingBottom: '30px',
+  },
+  SLIDESHOW_WRAPPER: {
+    margin: 'auto',
+    width: '100%',
+    height: '100%',
+  },
+  SLIDESHOW_WRAPPER_INNER: {
+    margin: 'auto',
+    width: '100%',
+    height: '100%',
   },
 };
