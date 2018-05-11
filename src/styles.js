@@ -31,7 +31,6 @@ export const Styles = {
     width: '100%',
     bottom: '0',
     left: '0',
-    zIndex: '10',
   },
   PAGE_VIEW: {
     color: '#fff',
